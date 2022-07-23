@@ -1,0 +1,15 @@
+{
+  "name": "atomic",
+  "version": "1.0.0",
+  "description": "is a minimal and flexible Node.js web application framework that provides a robust set of features for web applications",
+  "repository": "https://github.com/dj45-sys/AtomicJS",
+  "author": "dj45-sys",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {}
+}
