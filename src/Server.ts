@@ -1,5 +1,5 @@
 import { createServer as cs, IncomingMessage as im, ServerResponse as sr } from 'http';
-import fs from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 
 /**
  * This class provides a simple HTTP server that can be used to serve static files.
@@ -28,19 +28,13 @@ class Server {
                 throw new Error(err.toString());
                 // Handle error...
             });
-            const filename = fs.readdirSync(path).forEach(file => {
+            const filename = readdirSync(path).forEach(file => {
                 return file
             });
-            if(req.url === `/${filename}`) {
-                fs.readFileSync(path + filename, (err, data) => {
-                    if(err) {
-                        res.statusCode = 500;
-                        res.end('500: Internal Server Error');
-                        return;
-                    }
-                    res.statusCode = 200;
-                    res.end(data);
-                }).toString();
+            if (req.url === `/${filename}`) {
+                const content = readFileSync(path + filename)
+                res.statusCode = 200
+                res.end(content);
             }
 
         }
